@@ -1,3 +1,43 @@
+
+# 源码分析
+
+## 文件结构
+
+``` bash
+/Users/liufang/openSource/FunnyLiu/axios-retry
+├── CHANGELOG.md
+├── LICENSE
+├── README.md
+├── es
+|  └── index.js - 核心实现
+├── index.d.ts
+├── index.js
+├── package-lock.json
+├── package.json
+├── spec
+|  ├── index.spec.js
+|  └── support
+|     └── jasmine.json
+└── yarn.lock
+
+directory: 3 file: 11
+
+ignored
+
+```
+
+## 外部模块依赖
+
+![img](./outer.svg)
+
+## 内部模块依赖
+
+![img](./inner.svg)
+  
+## 工作原理
+
+定义一个axios响应拦截器，再里面计数来完成重复调用promise resolve 同一个axios config
+
 # axios-retry
 
 [![Build Status](https://travis-ci.org/softonic/axios-retry.svg?branch=master)](https://travis-ci.org/softonic/axios-retry)

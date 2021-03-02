@@ -195,8 +195,10 @@ export default function axiosRetry(axios, defaultOptions) {
     const currentState = getCurrentState(config);
 
     const shouldRetry = retryCondition(error) && currentState.retryCount < retries;
-
+    //是否应该重试
+    //如果应该重试
     if (shouldRetry) {
+      // 计数器+1
       currentState.retryCount += 1;
       const delay = retryDelay(currentState.retryCount, error);
 
@@ -211,7 +213,7 @@ export default function axiosRetry(axios, defaultOptions) {
       }
 
       config.transformRequest = [data => data];
-
+      // 响应拦截器返回一个promise去resolve axios，相当于再来一遍
       return new Promise(resolve => setTimeout(() => resolve(axios(config)), delay));
     }
 
